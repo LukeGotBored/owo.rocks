@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: monospace;
+            overflow: hidden;
+        }
+
+        #owo {
+            height: 100%;
+            width: 100%;
+        }  
+        
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: rgba(36, 36, 36, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none;
+            text-align: center;
+
+        }
+
+        #popup[data-visible="true"] {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        #popup p {
+            font-size: 20px;
+            text-align: center;
+            margin: 0;
+            max-width: 500px;
+        }
+
+        #popup h1 {
+            font-size: 30px;
+        }
+
+        #popup a,
+        #footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            color: #fff;
+            opacity: 0.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        #footer a:hover {
+            opacity: 1;
+        }
+
+        #footer a:active {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="owo" loading="eager"></canvas>
+
+    </canvas>
+    <div id="footer">
+        <a href="mailto:clip@owo.rocks">Contact me</a> | <a href="#" onclick="openpopup('about')">What's this?</a> | <a href="https://github.com/lukegotbored/owo.rocks">Source</a> | <a href="#" onclick="openpopup('privacy')">Privacy</a>
+    </div>
+
+    <div id="popup" data-visible="false"></div>
+
+    </div>
+
+    <script>
+        const canvas = document.getElementById('owo');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+
+            let text = `
+  ******  ***     **  ****** 
+ **////**//**  * /** **////**
+/**   /** /** ***/**/**   /**
+/**   /** /****/****/**   /**
+//******  ***/ ///**//****** 
+ //////  ///    ///  //////  
+        `;
+            // if the url contains ?uwu, then change the text to uwu
+            if (window.location.search.includes('uwu')) {
+                text = `                          
+ **   ** ***     ** **   **
+/**  /**//**  * /**/**  /**
+/**  /** /** ***/**/**  /**
+/**  /** /****/****/**  /**
+//****** ***/ ///**//******
+ ////// ///    ///  ////// 
+        `;
+            }
+
+
+        const lines = text.split('\n');
+        const lineHeight = 20;
+        let y = canvas.height / 2 - (lines.length * lineHeight) / 2;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            y = canvas.height / 2 - (lines.length * lineHeight) / 2;
+            ctx.font = `${lineHeight}px monospace`;
+        });
+
+        ctx.font = '20px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#fff';
+
+        let offset = 0;
+        let amplitude = 100;
+        let mouse = { x: 0, y: 0 };
+
+        canvas.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            lines.forEach((line, index) => {
+                const characters = line.split('');
+                characters.forEach((character, charIndex) => {
+                    ctx.fillStyle = character === '/' ? '#aaa' : '#fff';
+                    const x = lerp(canvas.width / 2 + (charIndex - characters.length / 2) * 15, canvas.width / 2 + (charIndex - characters.length / 2) * 10, 0.05);
+                    const waveOffset = Math.sin((index + charIndex + offset) * 0.5) * amplitude;
+                    ctx.fillText(character, x, y + index * lineHeight + waveOffset);
+                });
+            });
+
+            if (amplitude > 5) {
+                amplitude *= 0.99;
+            }
+
+            offset += 0.2;
+
+            requestAnimationFrame(animate);
+        }
+
+        function lerp(start, end, t) {
+            return start * (1 - t) + end * t;
+        }
+
+        animate();
+
+        function openpopup(id) {
+            const popup = document.getElementById('popup');
+            const popupContent = document.createElement('div'); // Create a new div element for the popup content
+
+            switch (id) {
+            case 'about':
+                popupContent.innerHTML = '<h1>About</h1><p>Welcome to owo.rocks! This website doesn\'t really do much as of now, but I\'m working on it. I\'m also working on a new website that will be a bit more polished and will have a lot more features. In the meantime, you can check out my other projects on <a href="https://github.com/lukegotbored">GitHub</a>.</p><p>I hope you enjoy my stuff!</p>';
+                break;
+            case 'privacy':
+                popupContent.innerHTML = '<h1>Privacy</h1><p>We don\'t collect any data nor track you, this website is provided as-is and is not affiliated with any company. We do not use cookies or any other tracking technology. This website is completely free and open source, and you can find the source code on <a href="https://github.com/lukegotbored/owo.rocks">GitHub</a>.</p><p>I hope you enjoy my stuff!</p>';
+                break;
+            default:
+                break;
+            }
+
+            popup.innerHTML = ''; // Clear the existing content of the popup
+            popup.appendChild(popupContent); // Append the new popup content to the popup element
+
+            const closeButton = document.createElement('div');
+            closeButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#fff"/><path d="M0 0h24v24H0z" fill="none"/></svg>';
+            closeButton.addEventListener('click', () => {
+            popup.dataset.visible = 'false';
+            });
+            closeButton.style.cssText = 'cursor: pointer; position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border: none; background: none; outline: none; padding: 15px; color: #fff; z-index: 101;';
+            popup.appendChild(closeButton);
+
+            popup.dataset.visible = popup.dataset.visible === 'true' ? 'false' : 'true';
+        }
+    </script>
+</body>
+</html>
