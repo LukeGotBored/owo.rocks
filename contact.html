@@ -3,7 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact :3</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Contact :3 - owo.rocks</title>
+    <meta name="title" content="nori@owo.rocks | Contact :3">
+    <meta name="description" content="Slide into my DMs (professionally)">
+    <meta name="keywords" content="contact, email, bluesky, nori, get in touch, collaboration">
+    <meta name="author" content="Nori">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://owo.rocks/contact.html">
+    <meta property="og:title" content="nori@owo.rocks | Contact :3">
+    <meta property="og:description" content="Slide into my DMs (professionally)">
+    <meta property="og:site_name" content="owo.rocks">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://owo.rocks/contact.html">
+    <meta name="twitter:title" content="nori@owo.rocks | Contact :3">
+    <meta name="twitter:description" content="Slide into my DMs (professionally)">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://owo.rocks/contact.html">
+    
     <link rel="preconnect" href="https://bsky.app" crossorigin>
     <link rel="preconnect" href="https://blankspace.nekoweb.org" crossorigin>
     <link rel="stylesheet" href="./styles.css" fetchpriority="high">
@@ -14,23 +38,23 @@
     </style>
 </head>
 <body>
-    <nav>
-        <pre data-text="owo.rocks" aria-label="owo.rocks"><a href="./index.html"> Home </a> | <a href="./about.html"> FAQ </a> | <a href="./contact.html" style="background-color: var(--accent); color: var(--link-hover-color)"> Contact </a></pre>
+    <nav role="navigation" aria-label="Main navigation">
+        <pre data-text="owo.rocks" aria-label="owo.rocks"><a href="./index.html"> Home </a> | <a href="./about.html"> FAQ </a> | <a href="./contact.html" aria-current="page" style="background-color: var(--accent); color: var(--link-hover-color)"> Contact </a></pre>
     </nav>
     
-    <main class="container">
+    <main class="container" role="main">
         <pre data-text="Contact" aria-label="Contact" class="outline">Email    <span class="accent">:</span>    <a href="mailto:hello@owo.rocks">hello@owo.rocks</a>
-Bluesky  <span class="accent">:</span>    <a href="https://bsky.app/owo.rocks" rel="external">@owo.rocks</a>
-Website  <span class="accent">:</span>    <a href="https://owo.rocks/">owo.rocks (duh)</a> / <a href="https://blankspace.nekoweb.org/" rel="external">blankspace.nekoweb.org</a>
+Bluesky  <span class="accent">:</span>    <a href="https://bsky.app/owo.rocks" rel="external noopener" target="_blank">@owo.rocks</a>
+Website  <span class="accent">:</span>    <a href="https://owo.rocks/">owo.rocks (duh)</a> / <a href="https://blankspace.nekoweb.org/" rel="external noopener" target="_blank">blankspace.nekoweb.org</a>
 
 Response time is usually 24-48
 hours. I'm also open to questions and collaborations!</pre>
 
-        <pre data-text="Info" aria-label="Info" class="outline">Timezone  <span class="accent">:</span>     UTC +1 [CET] <span id="time"></span>
+        <pre data-text="Info" aria-label="Info" class="outline">Timezone  <span class="accent">:</span>     UTC +1 [CET] <span id="time" aria-live="polite" aria-atomic="true"></span>
 Languages <span class="accent">:</span>     English, Italian</pre>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <pre data-text="Footer" aria-label="Footer">Made with ♥ by Nori :3
 Copyright © 2025 owo.rocks, all wrongs reserved</pre>
     </footer>
