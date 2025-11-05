@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ :3</title>
+    <link rel="preconnect" href="https://nori.owo.rocks" crossorigin>
+    <link rel="stylesheet" href="./styles.css" fetchpriority="high">
+    <style>
+        body {
+            max-width: clamp(300px, 90%, 900px);
+            margin: 0 auto;
+        }
+        pre {
+            text-align: left;
+        }
+        .a {
+            opacity: 0.9;
+        }
+        .marker {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <pre data-text="owo.rocks" aria-label="owo.rocks"><a href="./index.html"> Home </a> | <a href="./about.html" style="background-color: var(--accent); color: var(--link-hover-color)"> FAQ </a> | <a href="./contact.html"> Contact </a></pre>
+    </nav>
+    
+    <div class="container">
+        <pre data-text="FAQ" aria-label="FAQ" class="outline"><span class="accent">[?]</span> Who are you?
+[*] <span class="a">I'm Nori! Nice to meet you :3
+I'm a developer and university student, you can learn more about me in my <a href="https://nori.owo.rocks"><u>personal website</u></a>
+
+<span class="accent">[?]</span> What is owo.rocks?
+[*] <span class="a">I wanted to create a simple, cute, and fun website to host and showcase my projects! The domain was chosen purely out of luck, a "what if", you could say :D</span>
+
+<span class="accent">[?]</span> Why is this website so barebones?
+[*] <span class="a">I've gone through so many iterations for my personal website and I could never find something that felt right. So I ended up opting for a more minimalistic approach, focusing on content rather than flashy design. Less is more, right? :3</span>
+
+<span class="accent">[?]</span> Will you add more features to the website?
+[*] <span class="a">Maybe! I'm always open to suggestions and ideas. If you have any, feel free to reach out to me through the contact page!</span>
+
+<span class="accent">[?]</span> How can I contact you?
+[*] <span class="a">You can reach me through the contact page linked above! I'd love to hear from you :3</span>
+
+<span class="accent">[?]</span> <span id="meow">Should websites minimize JavaScript to respect user privacy and performance?</span>
+[*] <span class="a">...meow?</span>
+
+<span class="accent">[?]</span> Are you actually a cat?
+[*] <span class="a"><a href="./me.jpg" target="_blank"><u>yes, here's a picture of me</u></a></span>
+
+<span class="accent">[?]</span> Wasn't this website full of resources on HRT and FTM transitioning?
+[*] I got this domain in 2023-ish... <a href="https://hrtcafe.net/">Honestly,</a> <a href="https://diyhrt.wiki/">I</a> <a href="https://hrt.coffee/">have</a> <a href="https://diyhrt.market">no</a> <a href="https://transfemscience.org">idea</a> <a href="https://hrt.cat/">of</a> <a href="https://hrt.wtf/reddit/r/TransDIY/wiki.html">what</a> <a href="https://hrt.wtf/">you're</a> <a href="https://hrt.soap.systems/">talking</a> <a href="https://hrt.soap.systems/readme.html">about.</a> :3      
+
+</pre>
+    </div>
+    <footer>
+        <pre data-text="Footer" aria-label="Footer">Made with ♥ by Nori :3
+Copyright © 2025 owo.rocks, all wrongs reserved</pre>
+    </footer>
+</body>
+
+<script defer>
+    const questions = [
+        "Should executives gain emergency powers to manage climate transition, and under what checks?",
+        "Is electoral reform toward proportional representation necessary to restore legitimacy?",
+        "How should states balance data privacy with national security in cross-border surveillance?",
+        "Do sanctions change authoritarian behavior or entrench regimes at civilian cost?",
+        "What obligations do democracies have to accept climate and conflict-driven migration?",
+        "Who governs AI models that influence public discourse: markets, regulators, or treaties?",
+        "Can central bank independence endure amid persistent fiscal deficits and populism?",
+        "Should platforms be treated as common carriers to protect speech and competition?",
+        "Is decoupling from strategic rivals stabilizing or a path to permanent conflict?",
+        "How can climate finance equitably allocate burdens between historical emitters and the Global South?",
+        "Do defense alliances deter aggression or provoke arms races in multipolar systems?",
+        "Should trade policy prioritize resilience over efficiency after supply chain shocks?",
+    ];
+    
+    document.getElementById("meow").textContent = questions[Math.floor(Math.random() * questions.length)];
+</script>
+</html>
