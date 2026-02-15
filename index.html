@@ -29,6 +29,7 @@
         }
 
         html {
+            height: 100%;
             background-color: #000
         }
 
@@ -45,13 +46,17 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            min-height: 100svh;
+            min-height: 100dvh;
             line-height: 1.6;
             background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: center center;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             overscroll-behavior: contain;
-            transition: background-size .2s ease, transform .4s cubic-bezier(.22, 1, .36, 1), border-radius .4s cubic-bezier(.22, 1, .36, 1)
+            transition: background-size .2s ease, transform .4s cubic-bezier(.22, 1, .36, 1), border-radius .4s cubic-bezier(.22, 1, .36, 1);
+            overscroll-behavior: contain;
         }
 
         body::after {
@@ -68,6 +73,7 @@
             padding: 3rem;
             max-width: 500px;
             width: 85%;
+            overflow: visible;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
             position: relative;
@@ -238,6 +244,9 @@
             border-radius: 14px;
             box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
             margin: auto;
+            max-height: min(86dvh, 38rem);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             opacity: 0;
             transform: scale(.98) translateY(10px);
             transition: opacity .35s allow-discrete, transform .4s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .35s allow-discrete, overlay .35s allow-discrete
@@ -357,12 +366,15 @@
             body {
                 background-size: 20px 20px;
                 align-items: flex-end;
-                padding: 0;
+                min-height: 100svh;
+                min-height: 100dvh;
+                padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
                 text-wrap: balance;
                 perspective: 1200px;
                 transform: scale(1);
                 transform-origin: center bottom;
                 border-radius: 0;
+                overflow-y: auto;
                 transition: transform .42s cubic-bezier(.22, 1, .36, 1), border-radius .42s cubic-bezier(.22, 1, .36, 1), background-size .2s ease
             }
 
@@ -375,7 +387,7 @@
                 width: 100%;
                 max-width: 100%;
                 border-radius: 20px 20px 0 0;
-                padding: 2rem 1.5rem 3rem 1.5rem;
+                padding: 2rem 1.5rem calc(3rem + env(safe-area-inset-bottom)) 1.5rem;
                 margin: 0;
                 border: none;
                 border-top: 1px solid rgba(255, 255, 255, .1);
@@ -402,6 +414,9 @@
                 margin: 0;
                 width: 100%;
                 max-width: 100%;
+                max-height: min(92dvh, 44rem);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
                 border: 1px solid var(--border);
                 border-bottom: 0;
                 border-radius: 20px 20px 0 0;
