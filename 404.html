@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#181926">
+    <title>404 | owo.rocks</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #181926;
+            --text: #cad3f5;
+            --heading: #b8c0e0;
+            --accent: #c6a0f6;
+            --link: #8aadf4;
+            --grid: #24273a;
+            --surface: rgba(17, 17, 27, 0.9);
+            --border: rgba(255, 255, 255, 0.05);
+            --action-size: 3.2rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+            background-color: #000;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+            padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            text-wrap: balance;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle, transparent 40%, var(--bg) 100%);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            width: min(560px, 100%);
+            max-height: calc(100dvh - max(1rem, env(safe-area-inset-top)) - max(1rem, env(safe-area-inset-bottom)));
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            padding: 2.25rem;
+        }
+
+        .code {
+            margin: 0;
+            color: var(--accent);
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0.25rem 0 1rem;
+            color: var(--heading);
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            line-height: 1.2;
+        }
+
+        p {
+            margin: 0 0 1rem;
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .actions {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: nowrap;
+            align-items: stretch;
+        }
+
+        .button-link {
+            all: unset;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text);
+            border-radius: 12px;
+            height: var(--action-size);
+            padding: 0 1rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+            touch-action: manipulation;
+            transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .button-link svg {
+            width: 1.1em;
+            height: 1.1em;
+            display: block;
+            fill: currentColor;
+            flex-shrink: 0;
+            pointer-events: none;
+        }
+
+        .button-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .button-link:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .button-link.primary {
+            flex: 1 1 auto;
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .button-link.primary:hover {
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .button-link.icon-only {
+            padding: 0;
+            width: var(--action-size);
+            min-width: var(--action-size);
+            flex: 0 0 var(--action-size);
+        }
+
+        .button-link.icon-only svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                align-items: flex-end;
+                background-size: 20px 20px;
+                min-height: 100svh;
+                min-height: 100dvh;
+                padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+            }
+
+            main {
+                width: 100%;
+                max-height: calc(100dvh - env(safe-area-inset-top));
+                border-radius: 20px 20px 0 0;
+                border: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 1.8rem 1.25rem calc(1.8rem + env(safe-area-inset-bottom));
+            }
+
+            .actions {
+                width: 100%;
+            }
+
+            .button-link {
+                flex: 1 1 0;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .button-link.icon-only {
+                flex: 0 0 var(--action-size);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p class="code">Error 404</p>
+        <h1>Page Not Found</h1>
+        <p>
+            You found a <span class="highlight">veeeeery exclusive empty room</span>.
+            The link might be old, mistyped or maybe it was just never meant to be.
+        </p>
+        <p>Good news: the rest of the site <i>should</i> still be where it's supposed to be.</p>
+
+        <nav class="actions" aria-label="404 actions">
+            <button class="button-link icon-only js" onclick="history.back()" aria-label="Go back"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M21 11.25H5.31l5.22-5.22-1.06-1.06-6.145 6.145a1.258 1.258 0 0 0 0 1.77L9.47 19.03l1.06-1.06-5.22-5.22H21v-1.5Z"/></svg></button>
+            <a class="button-link primary" href="/">Take Me Home</a>
+        </nav>
+
+        <noscript>
+            <style>
+                .js {
+                    display: none;
+                }
+            </style>
+        </noscript>
+    </main>
+</body>
+
+</html>
