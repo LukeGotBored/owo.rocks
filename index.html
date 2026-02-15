@@ -5,10 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#181926">
-    <title>owo.rocks</title>
+    <meta name="robots" content="index,follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Primary Meta Tags -->
+    <title>owo.rocks // friends & stuff!</title>
+    <meta name="title" content="owo.rocks // friends & stuff!" />
+    <meta name="description"
+        content="A collective of friends sharing projects, experiments and whatever else we want to create!" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://owo.rocks/" />
+    <meta property="og:site_name" content="owo.rocks" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="owo.rocks // friends & stuff!" />
+    <meta property="og:description"
+        content="A collective of friends sharing projects, experiments and whatever else we want to create!" />
+    <meta property="og:image" content="https://owo.rocks/og.png" />
+    <meta property="og:image:alt" content="owo.rocks preview image" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://owo.rocks/" />
+    <meta property="twitter:title" content="owo.rocks // friends & stuff!" />
+    <meta property="twitter:description"
+        content="A collective of friends sharing projects, experiments and whatever else we want to create!" />
+    <meta property="twitter:image" content="https://owo.rocks/og.png" />
+    <meta property="twitter:image:alt" content="owo.rocks preview image" />
+
+
+    <link rel="canonical" href="https://owo.rocks/" />
+
+
     <style>
         :root {
             color-scheme: dark;
@@ -533,6 +565,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             *,
             ::before,
             ::after {
@@ -559,7 +592,8 @@
         <p class="mascot" aria-hidden="true">₍^. .^₎⟆</p>
         <h1>owo.rocks</h1>
         <p>Welcome to the <span class="highlight">collective</span>.</p>
-        <p>The domain was available, so now we live here.<br><br>We host friends, experiments, projects and whatever else we want to share with the world!<br><br>Managed by silly cat people. Powered by bugs.</p>
+        <p>The domain was available, so now we live here.<br><br>We host friends, experiments, projects and whatever
+            else we want to share with the world!<br><br>Managed by silly cat people. Powered by bugs.</p>
         <nav aria-label="Primary">
             <ul>
                 <li><button type="button" class="link-style" popovertarget="mail-popover"><svg width="24" height="24"
@@ -575,7 +609,8 @@
                 <!-- <li><a class="link-style" href="/gallery">Gallery</a></li> -->
             </ul>
         </nav>
-        <div id="about-popover" popover role="dialog" aria-modal="true" aria-labelledby="about-title" aria-describedby="about-description">
+        <div id="about-popover" popover role="dialog" aria-modal="true" aria-labelledby="about-title"
+            aria-describedby="about-description">
             <h2><span id="about-title">About Us</span> <button type="button" class="close-btn"
                     popovertarget="about-popover" popovertargetaction="hide" aria-label="Close about dialog"><svg
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -584,12 +619,15 @@
                     </svg></button>
             </h2>
             <p><a href="https://owo.rocks">owo.rocks</a> is a small project run by <a
-                    href="https://github.com/lukegotbored">Nori</a>. It's our shared corner of the internet for all kinds of weird and wonderful things we want to create and share with others!</p>
-            <p>It is private for now. If you want in, you can test your luck by <button type="button" class="inline-link-button" popovertarget="mail-popover">contacting us</button> ;)<br>
+                    href="https://github.com/lukegotbored">Nori</a>. It's our shared corner of the internet for all
+                kinds of weird and wonderful things we want to create and share with others!</p>
+            <p>It is private for now. If you want in, you can test your luck by <button type="button"
+                    class="inline-link-button" popovertarget="mail-popover">contacting us</button> ;)<br>
                 We cannot promise a spot, but we are always happy to meet new people and hear weird ideas!</p>
             <p id="about-description" class="sr-only">About dialog with project details and links.</p>
             <p><b>Attributions:</b><br>
-                <a href="https://github.com/griddy-icons/griddy-icons" rel="external noopener noreferrer" target="_blank">Icons by Griddy Icons</a>
+                <a href="https://github.com/griddy-icons/griddy-icons" rel="external noopener noreferrer"
+                    target="_blank">Icons by Griddy Icons</a>
             </p>
             <p>Made with <3 by Nori.<br>Trans rights are human rights 🏳️‍⚧</p>
 
@@ -597,17 +635,19 @@
                     popovertargetaction="hide">Close</button>
             </div>
         </div>
-        <div id="mail-popover" popover role="dialog" aria-modal="true" aria-labelledby="mail-title" aria-describedby="mail-description">
-            <h2><span id="mail-title">Contact Us</span> <button type="button" class="close-btn" popovertarget="mail-popover"
-                    popovertargetaction="hide" aria-label="Close contact confirmation"><svg viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <div id="mail-popover" popover role="dialog" aria-modal="true" aria-labelledby="mail-title"
+            aria-describedby="mail-description">
+            <h2><span id="mail-title">Contact Us</span> <button type="button" class="close-btn"
+                    popovertarget="mail-popover" popovertargetaction="hide" aria-label="Close contact confirmation"><svg
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <path
                             d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
                     </svg></button></h2>
             <p id="mail-description">This action will open your default mail client. Do you want to proceed?</p>
             <div class="popover-actions"><button type="button" popovertarget="mail-popover"
-                    popovertargetaction="hide">Maybe Later</button> <a class="primary-action" href="mailto:contact@owo.rocks"
-                    popovertarget="mail-popover" popovertargetaction="hide">Send Email</a></div>
+                    popovertargetaction="hide">Maybe Later</button> <a class="primary-action"
+                    href="mailto:contact@owo.rocks" popovertarget="mail-popover" popovertargetaction="hide">Send
+                    Email</a></div>
         </div>
     </main>
     <script>
