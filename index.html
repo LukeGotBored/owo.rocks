@@ -362,6 +362,10 @@
             border-color: var(--accent)
         }
 
+        body[data-popover-lock="1"] [popovertarget]:not([popovertargetaction="hide"]) {
+            pointer-events: none;
+        }
+
         @media (max-width:600px) {
             body {
                 background-size: 20px 20px;
@@ -606,6 +610,40 @@
                     popovertarget="mail-popover" popovertargetaction="hide">Send Email</a></div>
         </div>
     </main>
+    <script>
+        (() => {
+            const lockDurationMs = 460;
+            let lockTimer = 0;
+
+            const setLock = () => {
+                document.body.dataset.popoverLock = "1";
+                window.clearTimeout(lockTimer);
+                lockTimer = window.setTimeout(() => {
+                    delete document.body.dataset.popoverLock;
+                }, lockDurationMs);
+            };
+
+            const popovers = document.querySelectorAll("[popover]");
+            for (const popover of popovers) {
+                popover.addEventListener("beforetoggle", setLock);
+                popover.addEventListener("toggle", setLock);
+            }
+
+            document.addEventListener("click", (event) => {
+                if (document.body.dataset.popoverLock !== "1") {
+                    return;
+                }
+
+                const trigger = event.target.closest("[popovertarget]:not([popovertargetaction='hide'])");
+                if (!trigger) {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+            }, true);
+        })();
+    </script>
 </body>
 
 </html>
