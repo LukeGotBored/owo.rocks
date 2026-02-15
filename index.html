@@ -1,60 +1,596 @@
-<!--
-　 /\___/\ ♡     <--- This is Simon
- =(˶•⩊•˶ )=⸝⁾⁾ 
-                
-    Simon really loves eating bugs!
-    Simon will probably kill more bugs than the developer ever will.
-    Say thank you to Simon by keeping this website intact!
--->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>owo.rocks - Welcome :3</title>
-    <meta name="title" content="nori@owo.rocks | :3">
-    <meta name="description" content="cat-powered hub for projects, links and other stuff!">
-    <meta name="keywords" content="owo, nori, noridev, clipowo, developer, portfolio, personal website">
-    <meta name="author" content="Nori">
-    <meta name="robots" content="index, follow">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://owo.rocks/">
-    <meta property="og:title" content="nori@owo.rocks | :3">
-    <meta property="og:description" content="cat-powered hub for projects, links and other stuff!">
-    <meta property="og:site_name" content="owo.rocks">
-    
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://owo.rocks/">
-    <meta name="twitter:title" content="nori@owo.rocks | :3">
-    <meta name="twitter:description" content="cat-powered hub for projects, links and other stuff!">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#181926">
+    <title>owo.rocks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #181926;
+            --text: #cad3f5;
+            --heading: #b8c0e0;
+            --accent: #c6a0f6;
+            --link: #8aadf4;
+            --grid: #24273a;
+            --surface: rgba(17, 17, 27, 0.9);
+            --border: rgba(255, 255, 255, 0.05)
+        }
 
-    <link rel="canonical" href="https://owo.rocks/">
-    
-    <link rel="preconnect" href="https://blankspace.nekoweb.org" crossorigin>
-    <link rel="preconnect" href="https://bsky.app" crossorigin>
-    <link rel="stylesheet" href="./styles.css" fetchpriority="high">
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box
+        }
+
+        html {
+            background-color: #000
+        }
+
+        body {
+            text-wrap: balance;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+            overflow: hidden;
+            overscroll-behavior: contain;
+            transition: background-size .2s ease, transform .4s cubic-bezier(.22, 1, .36, 1), border-radius .4s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, transparent 40%, var(--bg) 100%);
+            pointer-events: none;
+            transition: opacity .35s ease, background-size .2s ease, border-radius .4s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        main {
+            background: var(--surface);
+            padding: 3rem;
+            max-width: 500px;
+            width: 85%;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--border);
+            transition: transform .4s cubic-bezier(.32, .72, 0, 1), border-radius .4s, opacity .4s;
+            will-change: transform
+        }
+
+        h1 {
+            color: var(--heading);
+            font-size: 2rem;
+            margin: 0 0 1.5rem 0;
+            font-weight: 700;
+            letter-spacing: -1px
+        }
+
+        h2 {
+            color: var(--heading);
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--grid);
+            padding-bottom: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: .95rem
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-style: italic
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 2.5rem 0 0 0;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.15em;
+            transition: color .15s ease;
+            touch-action: manipulation
+        }
+
+        a:hover {
+            color: var(--accent)
+        }
+
+        ::selection {
+            background: rgba(198, 160, 246, .28);
+            color: #fff
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .link-style:focus-visible,
+        .close-btn:focus-visible,
+        .popover-actions a:focus-visible,
+        .popover-actions button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 8px
+        }
+
+        .link-style {
+            all: unset;
+            cursor: pointer;
+            color: var(--link);
+            border-bottom: 2px dotted var(--link);
+            transition: color .15s ease, border-bottom-color .15s ease;
+            font-weight: 700;
+            display: inline-flex;
+            gap: .5rem;
+            align-items: center;
+            touch-action: manipulation
+        }
+
+        .link-style svg {
+            display: none
+        }
+
+        .link-style:hover {
+            color: var(--accent);
+            border-bottom-style: solid;
+            border-bottom-color: var(--accent)
+        }
+
+        .link-style:active {
+            transform: translateY(1px)
+        }
+
+        .inline-link-button {
+            all: unset;
+            cursor: pointer;
+            color: var(--link);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.15em;
+            transition: color .15s ease;
+            touch-action: manipulation
+        }
+
+        .inline-link-button:hover {
+            color: var(--accent)
+        }
+
+        .inline-link-button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+            border-radius: 4px
+        }
+
+        .mascot {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 1.5rem;
+            background: var(--bg);
+            padding: 5px 12px;
+            color: var(--accent);
+            transform: rotate(5deg);
+            border: 1px solid var(--grid);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+            white-space: nowrap;
+            cursor: grab;
+            transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: bottom;
+            user-select: none
+        }
+
+        .mascot:active {
+            cursor: grabbing;
+            transform: rotate(5deg) scaleY(.8)
+        }
+
+        [popover] {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            padding: 1.5rem;
+            max-width: 500px;
+            width: 85%;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+            margin: auto;
+            opacity: 0;
+            transform: scale(.98) translateY(10px);
+            transition: opacity .35s allow-discrete, transform .4s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .35s allow-discrete, overlay .35s allow-discrete
+        }
+
+        [popover]:popover-open {
+            opacity: 1;
+            transform: scale(1) translateY(0)
+        }
+
+        @starting-style {
+            [popover]:popover-open {
+                opacity: 0;
+                transform: scale(.95) translateY(10px)
+            }
+        }
+
+        [popover]::backdrop {
+            background: rgba(0, 0, 0, .4);
+            opacity: 0;
+            transition: opacity .35s allow-discrete, display .35s allow-discrete, overlay .35s allow-discrete
+        }
+
+        [popover]:popover-open::backdrop {
+            opacity: 1
+        }
+
+        @starting-style {
+            [popover]:popover-open::backdrop {
+                opacity: 0
+            }
+        }
+
+        .close-btn {
+            background: 0 0;
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            width: 1.9rem;
+            height: 1.9rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color .15s ease, color .15s ease;
+            touch-action: manipulation
+        }
+
+        .close-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        .close-btn svg {
+            width: 62%;
+            height: 62%;
+            display: block;
+            fill: currentColor;
+            pointer-events: none
+        }
+
+        .popover-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            flex-wrap: wrap
+        }
+
+        .popover-actions a,
+        .popover-actions button {
+            all: unset;
+            cursor: pointer;
+            color: var(--text);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .03);
+            border-radius: 10px;
+            padding: .55rem .85rem;
+            line-height: 1.2;
+            font-weight: 700;
+            font-size: .9rem;
+            transition: border-color .15s ease, color .15s ease;
+            touch-action: manipulation
+        }
+
+        .popover-actions a:hover,
+        .popover-actions button:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        .popover-actions a:active,
+        .popover-actions button:active,
+        .close-btn:active {
+            transform: translateY(1px)
+        }
+
+        body:has([popover]:popover-open) main {
+            transform: scale(.9) translateY(-15px);
+        }
+
+        .popover-actions .primary-action {
+            color: var(--bg);
+            background: var(--accent);
+            border-color: var(--accent)
+        }
+
+        .popover-actions .primary-action:hover {
+            color: var(--bg);
+            background: var(--accent);
+            border-color: var(--accent)
+        }
+
+        @media (max-width:600px) {
+            body {
+                background-size: 20px 20px;
+                align-items: flex-end;
+                padding: 0;
+                text-wrap: balance;
+                perspective: 1200px;
+                transform: scale(1);
+                transform-origin: center bottom;
+                border-radius: 0;
+                transition: transform .42s cubic-bezier(.22, 1, .36, 1), border-radius .42s cubic-bezier(.22, 1, .36, 1), background-size .2s ease
+            }
+
+            body::after {
+                background: linear-gradient(to bottom, transparent 0, var(--bg) 90%);
+                opacity: .82
+            }
+
+            main {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+                padding: 2rem 1.5rem 3rem 1.5rem;
+                margin: 0;
+                border: none;
+                border-top: 1px solid rgba(255, 255, 255, .1);
+                box-shadow: 0 -10px 40px rgba(0, 0, 0, .5);
+                transform: none
+            }
+
+            body:has([popover]:popover-open) {
+                transform: scale(.94) translateY(-10px);
+                border-radius: 14px
+            }
+
+            body:has([popover]:popover-open)::after {
+                opacity: 1
+            }
+
+            body:has([popover]:popover-open) main {
+                transform: none
+            }
+
+            [popover] {
+                position: fixed;
+                inset: auto 0 0 0;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                border: 1px solid var(--border);
+                border-bottom: 0;
+                border-radius: 20px 20px 0 0;
+                padding: 1.5rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+                transform: translateY(106%);
+                opacity: 1;
+                box-shadow: 0 -14px 36px rgba(0, 0, 0, .6);
+                transition: transform .48s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .48s allow-discrete, overlay .48s allow-discrete
+            }
+
+            [popover]:popover-open {
+                transform: translateY(0)
+            }
+
+            @starting-style {
+                [popover]:popover-open {
+                    transform: translateY(106%)
+                }
+            }
+
+            [popover]::backdrop {
+                background: rgba(0, 0, 0, .5)
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                padding-bottom: .7rem
+            }
+
+            .close-btn {
+                width: 2rem;
+                height: 2rem
+            }
+
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem
+            }
+
+            .mascot {
+                top: -40px;
+                right: 20px;
+                border-color: var(--accent);
+                transform: rotate(-5deg);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, .4)
+            }
+
+            .mascot:active {
+                transform: rotate(-5deg) scaleY(.8)
+            }
+
+            ul {
+                flex-direction: column;
+                gap: .8rem;
+                width: 100%
+            }
+
+            ul li {
+                width: 100%
+            }
+
+            .link-style {
+                color: var(--accent);
+                display: flex;
+                width: 100%;
+                padding: .7rem;
+                background: rgba(255, 255, 255, .03);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                justify-content: center;
+                box-sizing: border-box
+            }
+
+            .link-style svg {
+                display: inline-block;
+                fill: var(--accent)
+            }
+
+            .link-style:hover {
+                border: 1px solid var(--accent)
+            }
+
+            .link-style:active {
+                transform: scale(.985);
+                background: rgba(198, 160, 246, .08);
+                border-color: var(--accent)
+            }
+
+            .popover-actions {
+                width: 100%
+            }
+
+            .popover-actions a,
+            .popover-actions button {
+                flex: 1 1 auto;
+                text-align: center;
+                justify-content: center
+            }
+
+            .popover-actions a:active,
+            .popover-actions button:active {
+                transform: scale(.985)
+            }
+
+            .close-btn:active {
+                transform: scale(.94);
+                background: rgba(198, 160, 246, .08)
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            ::before,
+            ::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important
+            }
+
+            body,
+            main,
+            body:has([popover]:popover-open),
+            body:has([popover]:popover-open) main,
+            [popover],
+            [popover]:popover-open {
+                transform: none !important
+            }
+        }
+    </style>
 </head>
-<body>
-    <nav role="navigation" aria-label="Main navigation">
-        <pre data-text="owo.rocks" aria-label="owo.rocks"><a href="./index.html" aria-current="page" style="background-color: var(--accent); color: var(--link-hover-color)"> Home </a> | <a href="./about.html"> FAQ </a> | <a href="./contact.html"> Contact </a></pre>
-    </nav>
-    
-    <main class="content" role="main">
-        <pre data-text="Welcome to" aria-label="Welcome to owo" class="outline">  _____      _____  
- / _ \ \ /\ / / _ \ 
-| (_) \ V  V / (_) |
- \___/ \_/\_/ \___/ 
 
-            dot rocks!</pre>
-        <pre data-text="Quick Links" aria-label="Quick Links" class="outline"><a href="https://blankspace.nekoweb.org/" rel="external noopener" target="_blank">blankspace</a> | <a href="https://bsky.app/profile/owo.rocks" rel="external noopener" target="_blank">bluesky</a></pre>
+<body>
+    <main>
+        <p class="mascot" aria-hidden="true">₍^. .^₎⟆</p>
+        <h1>owo.rocks</h1>
+        <p>Welcome to the <span class="highlight">collective</span>.</p>
+        <p>The domain was available, so now we live here.<br><br>We host friends, experiments, projects and whatever else we want to share with the world!<br><br>Managed by silly cat people. Powered by bugs.</p>
+        <nav aria-label="Primary">
+            <ul>
+                <li><button type="button" class="link-style" popovertarget="mail-popover"><svg width="24" height="24"
+                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path
+                                d="M19.25 4H4.75A2.755 2.755 0 0 0 2 6.75v10.5A2.755 2.755 0 0 0 4.75 20h14.5A2.755 2.755 0 0 0 22 17.25V6.75A2.755 2.755 0 0 0 19.25 4ZM4.75 5.5h14.5c.69 0 1.25.56 1.25 1.25v.975l-8.5 4.91-8.5-4.91V6.75c0-.69.56-1.25 1.25-1.25Zm14.5 13H4.75c-.69 0-1.25-.56-1.25-1.25V9.46l8.5 4.91 8.5-4.91v7.79c0 .69-.56 1.25-1.25 1.25Z" />
+                        </svg>Contact</button></li>
+                <li><button type="button" class="link-style" popovertarget="about-popover"><svg width="24" height="24"
+                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M7 9C5.07 9 3.5 7.43 3.5 5.5S5.07 2 7 2s3.5 1.57 3.5 3.5S8.93 9 7 9Zm0-5.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 7 3.5Zm6.5 2C13.5 7.43 15.07 9 17 9s3.5-1.57 3.5-3.5S18.93 2 17 2s-3.5 1.57-3.5 3.5Zm1.5 0a2 2 0 1 1 3.999-.001A2 2 0 0 1 15 5.5Zm-6.5 7c0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5S13.93 9 12 9s-3.5 1.57-3.5 3.5Zm1.5 0a2 2 0 1 1 3.999-.001A2 2 0 0 1 10 12.5Zm5.92 7.425.61 2.27v-.005l1.45-.39-.61-2.265a2.75 2.75 0 0 0-2.655-2.04h-5.43c-1.24 0-2.335.84-2.655 2.04l-.61 2.27 1.45.39.61-2.27c.145-.545.64-.925 1.205-.925h5.43c.565 0 1.06.38 1.205.925Zm4.505-7 .74 2.77 1.45-.39-.74-2.765a2.75 2.75 0 0 0-2.655-2.04h-2.215V12h2.215c.565 0 1.06.38 1.205.925Zm-19.04 2.38 1.45.39v-.005l.74-2.77c.145-.545.64-.925 1.205-.925h2.215v-1.5H4.78c-1.24 0-2.335.84-2.655 2.04l-.74 2.77Z" />
+                        </svg>About Us</button></li>
+                <!-- <li><a class="link-style" href="/gallery">Gallery</a></li> -->
+            </ul>
+        </nav>
+        <div id="about-popover" popover role="dialog" aria-modal="true" aria-labelledby="about-title" aria-describedby="about-description">
+            <h2><span id="about-title">About Us</span> <button type="button" class="close-btn"
+                    popovertarget="about-popover" popovertargetaction="hide" aria-label="Close about dialog"><svg
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path
+                            d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
+                    </svg></button>
+            </h2>
+            <p><a href="https://owo.rocks">owo.rocks</a> is a small project run by <a
+                    href="https://github.com/lukegotbored">Nori</a>. It's our shared corner of the internet for all kinds of weird and wonderful things we want to create and share with others!</p>
+            <p>It is private for now. If you want in, you can test your luck by <button type="button" class="inline-link-button" popovertarget="mail-popover">contacting us</button> ;)<br>
+                We cannot promise a spot, but we are always happy to meet new people and hear weird ideas!</p>
+            <p id="about-description" class="sr-only">About dialog with project details and links.</p>
+            <p><b>Attributions:</b><br>
+                <a href="https://github.com/griddy-icons/griddy-icons" rel="external noopener noreferrer" target="_blank">Icons by Griddy Icons</a>
+            </p>
+            <p>Made with <3 by Nori.<br>Trans rights are human rights 🏳️‍⚧</p>
+
+            <div class="popover-actions"><button type="button" popovertarget="about-popover"
+                    popovertargetaction="hide">Close</button>
+            </div>
+        </div>
+        <div id="mail-popover" popover role="dialog" aria-modal="true" aria-labelledby="mail-title" aria-describedby="mail-description">
+            <h2><span id="mail-title">Contact Us</span> <button type="button" class="close-btn" popovertarget="mail-popover"
+                    popovertargetaction="hide" aria-label="Close contact confirmation"><svg viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path
+                            d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
+                    </svg></button></h2>
+            <p id="mail-description">This action will open your default mail client. Do you want to proceed?</p>
+            <div class="popover-actions"><button type="button" popovertarget="mail-popover"
+                    popovertargetaction="hide">Maybe Later</button> <a class="primary-action" href="mailto:contact@owo.rocks"
+                    popovertarget="mail-popover" popovertargetaction="hide">Send Email</a></div>
+        </div>
     </main>
-    
-    <footer role="contentinfo">
-        <pre data-text="Footer" aria-label="Footer">Made with ♥ by Nori :3
-Copyright © 2025 owo.rocks, all wrongs reserved</pre>
-    </footer>
 </body>
+
 </html>
