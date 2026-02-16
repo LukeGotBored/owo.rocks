@@ -629,7 +629,7 @@
                 <a href="https://github.com/griddy-icons/griddy-icons" rel="external noopener noreferrer"
                     target="_blank">Icons by Griddy Icons</a>
             </p>
-            <p>Made with <3 by Nori.<br>Trans rights are human rights 🏳️‍⚧</p>
+            <p>Made with &lt;3 by Nori.<br>Trans rights are human rights 🏳️‍⚧</p>
 
             <div class="popover-actions"><button type="button" popovertarget="about-popover"
                     popovertargetaction="hide">Close</button>
@@ -644,46 +644,20 @@
                             d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
                     </svg></button></h2>
             <p id="mail-description">This action will open your default mail client. Do you want to proceed?</p>
-            <div class="popover-actions"><button type="button" popovertarget="mail-popover"
-                    popovertargetaction="hide">Maybe Later</button> <a class="primary-action"
-                    href="mailto:contact@owo.rocks" popovertarget="mail-popover" popovertargetaction="hide">Send
-                    Email</a></div>
+        <div class="popover-actions">
+            <button type="button" popovertarget="mail-popover" popovertargetaction="hide">Maybe Later</button>
+            <button type="button" popovertarget="mail-popover" popovertargetaction="hide" class="js" onclick="window.ClipboardEvent ? navigator.clipboard.writeText('contact@owo.rocks') : null">Copy Email</button>
+            <a class="primary-action" href="mailto:contact@owo.rocks" popovertarget="mail-popover" popovertargetaction="hide">Send Email</a>
         </div>
+        
+        <noscript>
+            <style>
+                .js {
+                    display: none;
+                }
+            </style>
+        </noscript>
     </main>
-    <script>
-        (() => {
-            const lockDurationMs = 460;
-            let lockTimer = 0;
-
-            const setLock = () => {
-                document.body.dataset.popoverLock = "1";
-                window.clearTimeout(lockTimer);
-                lockTimer = window.setTimeout(() => {
-                    delete document.body.dataset.popoverLock;
-                }, lockDurationMs);
-            };
-
-            const popovers = document.querySelectorAll("[popover]");
-            for (const popover of popovers) {
-                popover.addEventListener("beforetoggle", setLock);
-                popover.addEventListener("toggle", setLock);
-            }
-
-            document.addEventListener("click", (event) => {
-                if (document.body.dataset.popoverLock !== "1") {
-                    return;
-                }
-
-                const trigger = event.target.closest("[popovertarget]:not([popovertargetaction='hide'])");
-                if (!trigger) {
-                    return;
-                }
-
-                event.preventDefault();
-                event.stopPropagation();
-            }, true);
-        })();
-    </script>
 </body>
 
 </html>
