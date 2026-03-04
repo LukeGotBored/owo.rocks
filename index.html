@@ -170,12 +170,7 @@
             text-decoration: underline;
             text-decoration-thickness: 1px;
             text-underline-offset: 0.15em;
-            transition: color .15s ease;
-            touch-action: manipulation
-        }
-
-        a:hover {
-            color: var(--accent)
+            transition: color .15s ease
         }
 
         ::selection {
@@ -183,63 +178,55 @@
             color: #fff
         }
 
-        a:focus-visible,
-        button:focus-visible,
-        .link-style:focus-visible,
-        .close-btn:focus-visible,
-        .popover-actions a:focus-visible,
-        .popover-actions button:focus-visible {
+        @media (hover: hover) {
+            :is(a:hover, .link-style:hover, .inline-link-button:hover, .close-btn:hover, .popover-actions a:hover, .popover-actions button:hover) {
+                color: var(--accent);
+                border-color: var(--accent);
+                background-color: rgba(198, 160, 246, 0.05)
+            }
+        }
+
+        :is(a, button, .link-style, .close-btn, .inline-link-button):focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 3px;
             border-radius: 8px
         }
 
-        .link-style {
+        .link-style,
+        .inline-link-button {
             all: unset;
             cursor: pointer;
             color: var(--link);
-            border-bottom: 2px dotted var(--link);
-            transition: color .15s ease, border-bottom-color .15s ease;
+            transition: all .15s ease;
             font-weight: 700;
+            touch-action: manipulation
+        }
+
+        .link-style {
+            border-bottom: 2px dotted var(--link);
             display: inline-flex;
             gap: .5rem;
-            align-items: center;
-            touch-action: manipulation
+            align-items: center
         }
 
         .link-style svg {
             display: none
         }
 
-        .link-style:hover {
-            color: var(--accent);
-            border-bottom-style: solid;
-            border-bottom-color: var(--accent)
-        }
-
-        .link-style:active {
-            transform: translateY(1px)
+        @media (hover: hover) {
+            .link-style:hover {
+                border-bottom: 2px solid var(--accent);
+            }
         }
 
         .inline-link-button {
-            all: unset;
-            cursor: pointer;
-            color: var(--link);
             text-decoration: underline;
             text-decoration-thickness: 1px;
-            text-underline-offset: 0.15em;
-            transition: color .15s ease;
-            touch-action: manipulation
+            text-underline-offset: 0.15em
         }
 
-        .inline-link-button:hover {
-            color: var(--accent)
-        }
-
-        .inline-link-button:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-            border-radius: 4px
+        :is(.link-style:active, .inline-link-button:active, .close-btn:active, .popover-actions a:active, .popover-actions button:active) {
+            transform: translateY(1px)
         }
 
         .mascot {
@@ -256,14 +243,33 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
             white-space: nowrap;
             cursor: grab;
-            transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.1s ease;
             transform-origin: bottom;
             user-select: none
         }
 
+        @media (hover: hover) {
+
+            .popover-actions a:hover,
+            .popover-actions button:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+                background: rgba(198, 160, 246, 0.05);
+            }
+
+            .mascot:hover {
+                background: rgba(198, 160, 246, 0.05);
+            }
+
+            .popover-actions .primary-action:hover {
+                filter: brightness(1.08)
+            }
+        }
+
         .mascot:active {
             cursor: grabbing;
-            transform: rotate(5deg) scaleY(.8)
+            transform: rotate(5deg) scaleY(.8);
+            background: rgba(198, 160, 246, 0.1);
         }
 
         [popover] {
@@ -299,7 +305,7 @@
         [popover]::backdrop {
             background: rgba(0, 0, 0, .4);
             opacity: 0;
-            transition: opacity .35s allow-discrete, display .35s allow-discrete, overlay .35s allow-discrete
+            transition: opacity .3s allow-discrete, display .3s allow-discrete, overlay .3s allow-discrete;
         }
 
         [popover]:popover-open::backdrop {
@@ -318,20 +324,13 @@
             color: var(--text);
             cursor: pointer;
             font-size: 1rem;
-            line-height: 1;
             width: 1.9rem;
             height: 1.9rem;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: border-color .15s ease, color .15s ease;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            transition: all .15s ease;
             touch-action: manipulation
-        }
-
-        .close-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent)
         }
 
         .close-btn svg {
@@ -354,7 +353,7 @@
         .popover-actions button {
             all: unset;
             cursor: pointer;
-            color: var(--text);
+            color: var(--accent);
             border: 1px solid var(--border);
             background: rgba(255, 255, 255, .03);
             border-radius: 10px;
@@ -362,14 +361,8 @@
             line-height: 1.2;
             font-weight: 700;
             font-size: .9rem;
-            transition: border-color .15s ease, color .15s ease;
+            transition: border-color .15s ease, color .15s ease, background-color .1s ease;
             touch-action: manipulation
-        }
-
-        .popover-actions a:hover,
-        .popover-actions button:hover {
-            border-color: var(--accent);
-            color: var(--accent)
         }
 
         .popover-actions a:active,
@@ -388,12 +381,6 @@
             border-color: var(--accent)
         }
 
-        .popover-actions .primary-action:hover {
-            color: var(--bg);
-            background: var(--accent);
-            border-color: var(--accent)
-        }
-
         body[data-popover-lock="1"] [popovertarget]:not([popovertargetaction="hide"]) {
             pointer-events: none;
         }
@@ -402,15 +389,9 @@
             body {
                 background-size: 20px 20px;
                 align-items: flex-end;
-                min-height: 100svh;
-                min-height: 100dvh;
                 padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-                text-wrap: balance;
                 perspective: 1200px;
-                transform: scale(1);
-                transform-origin: center bottom;
                 border-radius: 0;
-                overflow-y: auto;
                 transition: transform .42s cubic-bezier(.22, 1, .36, 1), border-radius .42s cubic-bezier(.22, 1, .36, 1), background-size .2s ease
             }
 
@@ -421,7 +402,6 @@
 
             main {
                 width: 100%;
-                max-width: 100%;
                 border-radius: 20px 20px 0 0;
                 padding: 2rem 1.5rem calc(3rem + env(safe-area-inset-bottom)) 1.5rem;
                 margin: 0;
@@ -445,20 +425,15 @@
             }
 
             [popover] {
-                position: fixed;
                 inset: auto 0 0 0;
                 margin: 0;
                 width: 100%;
-                max-width: 100%;
+                max-width: none;
                 max-height: min(95dvh, 44rem);
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                border: 1px solid var(--border);
                 border-bottom: 0;
                 border-radius: 20px 20px 0 0;
                 padding: 1.5rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
                 transform: translateY(106%);
-                opacity: 1;
                 box-shadow: 0 -14px 36px rgba(0, 0, 0, .6);
                 transition: transform .48s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .48s allow-discrete, overlay .48s allow-discrete
             }
@@ -495,7 +470,6 @@
 
             .mascot {
                 top: -40px;
-                right: 20px;
                 border-color: var(--accent);
                 transform: rotate(-5deg);
                 box-shadow: 0 4px 12px rgba(0, 0, 0, .4)
@@ -507,7 +481,7 @@
 
             ul {
                 flex-direction: column;
-                gap: .8rem;
+                gap: .5rem;
                 width: 100%
             }
 
@@ -516,46 +490,41 @@
             }
 
             .link-style {
-                color: var(--accent);
                 display: flex;
+                color: var(--accent);
                 width: 100%;
-                padding: .7rem;
-                background: rgba(255, 255, 255, .03);
-                border: 1px solid var(--border);
-                border-radius: 12px;
+                padding: .65rem .85rem;
+                background: rgba(255, 255, 255, .02);
+                border: none;
+                box-shadow: inset 0 0 0 1px var(--border);
+                border-radius: 10px;
                 justify-content: center;
-                box-sizing: border-box
+                box-sizing: border-box;
+                font-size: .9rem;
             }
 
             .link-style svg {
                 display: inline-block;
-                fill: var(--accent)
-            }
-
-            .link-style:hover {
-                border: 1px solid var(--accent)
-            }
-
-            .link-style:active {
-                transform: scale(.985);
-                background: rgba(198, 160, 246, .08);
-                border-color: var(--accent)
-            }
-
-            .popover-actions {
-                width: 100%
+                fill: var(--accent);
+                width: 1.25em;
+                height: 1.25em;
             }
 
             .popover-actions a,
             .popover-actions button {
-                flex: 1 1 auto;
+                flex: 1 1 100%;
                 text-align: center;
-                justify-content: center
+                justify-content: center;
+                padding: .65rem .85rem;
             }
 
-            .popover-actions a:active,
-            .popover-actions button:active {
-                transform: scale(.985)
+            .popover-actions {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            :is(.link-style:active, .popover-actions a:active, .popover-actions button:active) {
+                transform: scale(.985);
             }
 
             .close-btn:active {
@@ -635,29 +604,42 @@
                     popovertargetaction="hide">Close</button>
             </div>
         </div>
-        <div id="mail-popover" popover role="dialog" aria-modal="true" aria-labelledby="mail-title"
-            aria-describedby="mail-description">
+        <div id="mail-popover" popover role="dialog" aria-modal="true" aria-labelledby="mail-title">
             <h2><span id="mail-title">Contact Us</span> <button type="button" class="close-btn"
-                    popovertarget="mail-popover" popovertargetaction="hide" aria-label="Close contact confirmation"><svg
+                    popovertarget="mail-popover" popovertargetaction="hide" aria-label="Close contact dialog"><svg
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <path
                             d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
                     </svg></button></h2>
-            <p id="mail-description">This action will open your default mail client. Do you want to proceed?</p>
-        <div class="popover-actions">
-            <button type="button" popovertarget="mail-popover" popovertargetaction="hide">Maybe Later</button>
-            <button type="button" popovertarget="mail-popover" popovertargetaction="hide" class="js" onclick="window.ClipboardEvent ? navigator.clipboard.writeText('contact@owo.rocks') : null">Copy Email</button>
-            <a class="primary-action" href="mailto:contact@owo.rocks" popovertarget="mail-popover" popovertargetaction="hide">Send Email</a>
+            <p>You can directly email us at <strong
+                    style="user-select: all; cursor: text; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--accent); transition: background 0.1s ease;"
+                    onmouseover="this.style.background='rgba(198,160,246,0.15)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.05)'">contact@owo.rocks</strong>
+            </p>
+            <p style="font-size: 0.85rem; opacity: 0.8; margin-top: -0.5rem;">Tap the email above to select and copy it
+                manually, or use the button below to instantly compose a new message in your default mail app.</p>
+            <div class="popover-actions">
+                <button type="button" popovertarget="mail-popover" popovertargetaction="hide">Maybe Later</button>
+                <a class="primary-action" href="mailto:contact@owo.rocks" popovertarget="mail-popover"
+                    popovertargetaction="hide">Open Mail App</a>
+            </div>
         </div>
-        
-        <noscript>
-            <style>
-                .js {
-                    display: none;
-                }
-            </style>
-        </noscript>
     </main>
+    <script>
+        const isIOS = /iPhone|iPad/.test(navigator.userAgent);
+        const hapticEl = document.createElement('input');
+        if (isIOS) {
+            hapticEl.type = 'checkbox';
+            hapticEl.setAttribute('switch', '');
+            hapticEl.style.display = 'none';
+            document.body.appendChild(hapticEl);
+        }
+        document.addEventListener('click', e => {
+            if (e.target.closest('button, a')) {
+                isIOS ? hapticEl.click() : navigator.vibrate?.(15);
+            }
+        }, { passive: true });
+    </script>
 </body>
 
 </html>
