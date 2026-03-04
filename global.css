@@ -1,0 +1,158 @@
+:root {
+    color-scheme: dark;
+    --bg: #181926;
+    --text: #cad3f5;
+    --heading: #b8c0e0;
+    --accent: #c6a0f6;
+    --link: #8aadf4;
+    --grid: #24273a;
+    --surface: rgba(17, 17, 27, 0.9);
+    --border: rgba(255, 255, 255, 0.05);
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    background-color: #000;
+}
+
+body {
+    text-wrap: balance;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    line-height: 1.6;
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition: background-size .2s ease, transform .4s cubic-bezier(.22, 1, .36, 1), border-radius .4s cubic-bezier(.22, 1, .36, 1);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, transparent 40%, var(--bg) 100%);
+    pointer-events: none;
+    transition: opacity .35s ease, background-size .2s ease, border-radius .4s cubic-bezier(.22, 1, .36, 1);
+}
+
+main {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--border);
+    transition: transform .4s cubic-bezier(.32, .72, 0, 1), border-radius .4s, opacity .4s;
+    will-change: transform;
+}
+
+h1 {
+    color: var(--heading);
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+h2 {
+    color: var(--heading);
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+p {
+    font-size: .95rem;
+}
+
+.highlight {
+    color: var(--accent);
+    font-style: italic;
+}
+
+a {
+    transition: color .15s ease;
+    touch-action: manipulation;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+::selection {
+    background: rgba(198, 160, 246, .28);
+    color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible,
+:is(.link-style, .close-btn, .popover-actions a, .popover-actions button):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+@media (max-width:600px) {
+    body {
+        align-items: flex-end;
+        background-size: 20px 20px;
+        perspective: 1200px;
+        border-radius: 0;
+        transition: transform .42s cubic-bezier(.22, 1, .36, 1), border-radius .42s cubic-bezier(.22, 1, .36, 1), background-size .2s ease;
+    }
+
+    body::after {
+        background: linear-gradient(to bottom, transparent 0, var(--bg) 90%);
+        opacity: .82;
+    }
+
+    main {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        margin: 0;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, .5);
+        transform: none;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    body,
+    main {
+        transform: none !important;
+    }
+}
