@@ -8,6 +8,7 @@
     --grid: #24273a;
     --surface: rgba(17, 17, 27, 0.9);
     --border: rgba(255, 255, 255, 0.05);
+    --action-size: 3.2rem;
 }
 
 *,
@@ -27,6 +28,8 @@ body {
     color: var(--text);
     font-family: 'Space Mono', monospace;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
     margin: 0;
     display: flex;
     align-items: center;
@@ -55,6 +58,10 @@ body::after {
 
 main {
     background: var(--surface);
+    padding: 3rem;
+    max-width: 500px;
+    width: 85%;
+    overflow: visible;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
     position: relative;
@@ -81,6 +88,30 @@ h2 {
 
 p {
     font-size: .95rem;
+}
+
+.mascot {
+    position: absolute;
+    top: -30px;
+    right: 20px;
+    font-size: 1.5rem;
+    background: var(--bg);
+    padding: 5px 12px;
+    color: var(--accent);
+    transform: rotate(5deg);
+    border: 1px solid var(--grid);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+    white-space: nowrap;
+    cursor: grab;
+    transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.1s ease;
+    transform-origin: bottom;
+    user-select: none;
+}
+
+.mascot:active {
+    cursor: grabbing;
+    transform: rotate(5deg) scaleY(.8);
 }
 
 .highlight {
@@ -110,13 +141,35 @@ button:focus-visible,
     border-radius: 8px;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(198, 160, 246, 0.3);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(198, 160, 246, 0.5);
+}
+
 @media (max-width:600px) {
     body {
         align-items: flex-end;
         background-size: 20px 20px;
+        padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         perspective: 1200px;
         border-radius: 0;
         transition: transform .42s cubic-bezier(.22, 1, .36, 1), border-radius .42s cubic-bezier(.22, 1, .36, 1), background-size .2s ease;
+        overflow: hidden;
     }
 
     body::after {
@@ -127,6 +180,7 @@ button:focus-visible,
     main {
         width: 100%;
         border-radius: 20px 20px 0 0;
+        padding: 2rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom)) 1.5rem;
         margin: 0;
         border: none;
         border-top: 1px solid rgba(255, 255, 255, .1);
@@ -137,6 +191,17 @@ button:focus-visible,
     h1 {
         font-size: 1.75rem;
         margin-bottom: 1rem;
+    }
+
+    .mascot {
+        top: -40px;
+        border-color: var(--accent);
+        transform: rotate(-5deg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .4);
+    }
+
+    .mascot:active {
+        transform: rotate(-5deg) scaleY(.8);
     }
 }
 

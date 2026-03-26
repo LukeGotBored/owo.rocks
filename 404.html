@@ -32,77 +32,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="global.css">
     <style>
-        :root {
-            color-scheme: dark;
-            --bg: #181926;
-            --text: #cad3f5;
-            --heading: #b8c0e0;
-            --accent: #c6a0f6;
-            --link: #8aadf4;
-            --grid: #24273a;
-            --surface: rgba(17, 17, 27, 0.9);
-            --border: rgba(255, 255, 255, 0.05);
-            --action-size: 3.2rem;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            height: 100%;
-            background-color: #000;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            min-height: 100svh;
-            min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Space Mono', monospace;
-            line-height: 1.6;
-            background-image:
-                linear-gradient(var(--grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center center;
-            padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
-            overflow-x: hidden;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            text-wrap: balance;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background: radial-gradient(circle, transparent 40%, var(--bg) 100%);
-        }
-
-        main {
-            position: relative;
-            z-index: 1;
-            width: min(560px, 100%);
-            max-height: calc(100dvh - max(1rem, env(safe-area-inset-top)) - max(1rem, env(safe-area-inset-bottom)));
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            padding: 2.25rem;
-        }
-
         .code {
             margin: 0;
             color: var(--accent);
@@ -123,113 +54,87 @@
             font-size: 0.95rem;
         }
 
-        .highlight {
-            color: var(--accent);
-            font-style: italic;
-        }
+        
 
         .actions {
             margin-top: 1.5rem;
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: nowrap;
-            align-items: stretch;
         }
 
-        .button-link {
+        .popover-actions {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            background: transparent;
+        }
+
+        .popover-actions a,
+        .popover-actions button {
             all: unset;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
             cursor: pointer;
+            color: var(--accent);
             border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.01);
-            color: var(--text);
-            border-radius: 12px;
-            height: var(--action-size);
-            padding: 0 1rem;
+            background: rgba(255, 255, 255, .03);
+            border-radius: 10px;
+            padding: .55rem .85rem;
+            line-height: 1.2;
             font-size: 0.9rem;
             font-weight: 700;
             white-space: nowrap;
             touch-action: manipulation;
-            transition: all 0.1s ease;
+            transition: border-color .15s ease, color .15s ease, background-color .1s ease;
         }
 
-        .button-link svg {
-            width: 1.1em;
-            height: 1.1em;
-            display: block;
-            fill: currentColor;
-            flex-shrink: 0;
-            pointer-events: none;
-        }
-
-        .button-link:hover {
-            color: var(--accent);
+        .popover-actions .primary-action {
+            color: var(--bg);
+            background: var(--accent);
             border-color: var(--accent);
-            background: rgba(198, 160, 246, 0.05);
+            transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
         }
 
-        .button-link:active {
-            background: rgba(198, 160, 246, 0.1);
+        @media (hover: hover) {
+            .popover-actions a:hover,
+            .popover-actions button:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+                background: rgba(198, 160, 246, 0.05);
+            }
+
+            .popover-actions .primary-action:hover {
+                background: #d8b8ff;
+                border-color: #d8b8ff;
+                color: var(--bg);
+                filter: brightness(1.08);
+            }
         }
 
-        .button-link:focus-visible {
+        .popover-actions a:active,
+        .popover-actions button:active {
+            transform: translateY(1px)
+        }
+
+        .popover-actions a:focus-visible,
+        .popover-actions button:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 3px;
         }
 
-        .button-link.primary {
-            flex: 1 1 auto;
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--bg);
-        }
-
-        .button-link.primary:hover {
-            filter: brightness(1.1);
-        }
-
-        .button-link.primary:active {
-            filter: brightness(0.9);
-        }
-
-        .button-link.icon-only {
-            padding: 0;
-            width: var(--action-size);
-            min-width: var(--action-size);
-            flex: 0 0 var(--action-size);
-        }
-
-        .button-link.icon-only svg {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                align-items: flex-end;
-                background-size: 20px 20px;
-                padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
-            }
-
-            main {
-                width: 100%;
-                max-height: calc(100dvh - env(safe-area-inset-top));
-                border-radius: 20px 20px 0 0;
-                border: none;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 1.8rem 1.25rem calc(1.8rem + env(safe-area-inset-bottom));
-            }
-
-            .actions,
-            .button-link {
+        @media (max-width:600px) {
+            .popover-actions a,
+            .popover-actions button {
                 width: 100%;
             }
 
-            .button-link.icon-only {
-                flex: 0 0 var(--action-size);
+            .popover-actions {
+                gap: 0.6rem;
             }
         }
     </style>
@@ -237,6 +142,7 @@
 
 <body>
     <main>
+        <p class="mascot" aria-hidden="true">(╥﹏╥)</p>
         <p class="code">Error 404</p>
         <h1>Page Not Found</h1>
         <p>
@@ -246,9 +152,13 @@
         <p>Good news: the rest of the site <i>should</i> still be where it's supposed to be.</p>
 
         <nav class="actions" aria-label="404 actions">
-            <a class="button-link primary" href="/">Take Me Home</a>
+            <div class="popover-actions">
+                <a class="primary-action" href="/">Take Me Home</a>
+            </div>
         </nav>
-    </main>/script>
+    </main>
 </body>
 
 </html>
+
+

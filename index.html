@@ -1,11 +1,24 @@
 <!doctype html>
-<html lang="en">
 
+
+<!--                                        _        
+                                           | |       
+          _____      _____   _ __ ___   ___| | _____ 
+         / _ \ \ /\ / / _ \ | '__/ _ \ / __| |/ / __|
+        | (_) \ V  V / (_) || | | (_) | (__|   <\__ \
+         \___/ \_/\_/ \___(_)_|  \___/ \___|_|\_\___/
+
+    Brought to you by with lots of 💜 by Nori and friends.
+                  2026, all wrongs reversed.
+
+-->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#181926">
     <meta name="robots" content="index,follow">
+    <link rel="stylesheet" href="global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
@@ -39,81 +52,10 @@
 
 
     <link rel="canonical" href="https://owo.rocks/" />
+    
 
 
     <style>
-        :root {
-            color-scheme: dark;
-            --bg: #181926;
-            --text: #cad3f5;
-            --heading: #b8c0e0;
-            --accent: #c6a0f6;
-            --link: #8aadf4;
-            --grid: #24273a;
-            --surface: rgba(17, 17, 27, 0.9);
-            --border: rgba(255, 255, 255, 0.05)
-        }
-
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box
-        }
-
-        html {
-            height: 100%;
-            background-color: #000
-        }
-
-        body {
-            text-wrap: balance;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Space Mono', monospace;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            -webkit-tap-highlight-color: transparent;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            min-height: 100svh;
-            min-height: 100dvh;
-            line-height: 1.6;
-            background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center center;
-            overflow-x: hidden;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            transition: background-size .2s ease, transform .4s cubic-bezier(.22, 1, .36, 1), border-radius .4s cubic-bezier(.22, 1, .36, 1);
-            overscroll-behavior: contain;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle, transparent 40%, var(--bg) 100%);
-            pointer-events: none;
-            transition: opacity .35s ease, background-size .2s ease, border-radius .4s cubic-bezier(.22, 1, .36, 1)
-        }
-
-        main {
-            background: var(--surface);
-            padding: 3rem;
-            max-width: 500px;
-            width: 85%;
-            overflow: visible;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
-            position: relative;
-            z-index: 1;
-            border: 1px solid var(--border);
-            transition: transform .4s cubic-bezier(.32, .72, 0, 1), border-radius .4s, opacity .4s;
-            will-change: transform
-        }
 
         h1 {
             color: var(--heading);
@@ -137,11 +79,6 @@
         p {
             margin-bottom: 1.5rem;
             font-size: .95rem
-        }
-
-        .highlight {
-            color: var(--accent);
-            font-style: italic
         }
 
         .sr-only {
@@ -181,6 +118,11 @@
         #warning-popover p.accent-text {
             color: var(--accent);
             font-weight: bold;
+        }
+
+        #warning-popover p.flag-text {
+            background-color: linear-gradient(to right, #5dcef9, #f5abba, #ffffff, #f5abba, #5dcef9);
+
         }
 
         @media (hover: hover) {
@@ -234,25 +176,6 @@
             transform: translateY(1px)
         }
 
-        .mascot {
-            position: absolute;
-            top: -20px;
-            right: 20px;
-            font-size: 1.5rem;
-            background: var(--bg);
-            padding: 5px 12px;
-            color: var(--accent);
-            transform: rotate(5deg);
-            border: 1px solid var(--grid);
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
-            white-space: nowrap;
-            cursor: grab;
-            transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.1s ease;
-            transform-origin: bottom;
-            user-select: none
-        }
-
         @media (hover: hover) {
 
             .popover-actions a:hover,
@@ -262,42 +185,51 @@
                 background: rgba(198, 160, 246, 0.05);
             }
 
-            .mascot:hover {
-                background: rgba(198, 160, 246, 0.05);
-            }
-
             .popover-actions .primary-action:hover {
-                filter: brightness(1.08)
+                background: #d8b8ff;
+                border-color: #d8b8ff;
+                color: var(--bg);
+                filter: brightness(1.08);
             }
-        }
-
-        .mascot:active {
-            cursor: grabbing;
-            transform: rotate(5deg) scaleY(.8);
-            background: rgba(198, 160, 246, 0.1);
         }
 
         [popover] {
             border: 1px solid var(--border);
             background: var(--bg);
             color: var(--text);
-            padding: 1.5rem;
+            padding: 0;
             max-width: 500px;
             width: 85%;
             border-radius: 14px;
             box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
             margin: auto;
             max-height: min(86dvh, 38rem);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
             opacity: 0;
             transform: scale(.98) translateY(10px);
-            transition: opacity .35s allow-discrete, transform .4s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .35s allow-discrete, overlay .35s allow-discrete
+            transition: opacity .35s allow-discrete, transform .4s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .35s allow-discrete, overlay .35s allow-discrete;
+            overflow: hidden;
+            flex-direction: column;
         }
 
         [popover]:popover-open {
+            display: flex;
             opacity: 1;
             transform: scale(1) translateY(0)
+        }
+
+        [popover] h2 {
+            margin: 0;
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .popover-scroll-area {
+            padding: 1rem 1.5rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            flex: 1 1 auto;
+            min-height: 0;
         }
 
         @starting-style {
@@ -347,16 +279,25 @@
         }
 
         .popover-actions {
-            margin-top: 2rem;
+            margin: 0;
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
             display: flex;
             gap: 1rem;
             justify-content: flex-end;
-            flex-wrap: wrap
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            background: var(--bg);
         }
 
         .popover-actions a,
         .popover-actions button {
             all: unset;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            width: auto;
+            box-sizing: border-box;
             cursor: pointer;
             color: var(--accent);
             border: 1px solid var(--border);
@@ -368,6 +309,21 @@
             font-size: .9rem;
             transition: border-color .15s ease, color .15s ease, background-color .1s ease;
             touch-action: manipulation
+        }
+
+        .popover-actions a svg,
+        .popover-actions button svg {
+            width: 1.1em;
+            height: 1.1em;
+            display: block;
+            flex-shrink: 0;
+            pointer-events: none;
+            fill: currentColor;
+        }
+
+        .popover-actions a svg path,
+        .popover-actions button svg path {
+            fill: currentColor;
         }
 
         .popover-actions a:active,
@@ -383,7 +339,8 @@
         .popover-actions .primary-action {
             color: var(--bg);
             background: var(--accent);
-            border-color: var(--accent)
+            border-color: var(--accent);
+            transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
         }
 
         body[data-popover-lock="1"] [popovertarget]:not([popovertargetaction="hide"]) {
@@ -391,30 +348,6 @@
         }
 
         @media (max-width:600px) {
-            body {
-                background-size: 20px 20px;
-                align-items: flex-end;
-                padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-                perspective: 1200px;
-                border-radius: 0;
-                transition: transform .42s cubic-bezier(.22, 1, .36, 1), border-radius .42s cubic-bezier(.22, 1, .36, 1), background-size .2s ease
-            }
-
-            body::after {
-                background: linear-gradient(to bottom, transparent 0, var(--bg) 90%);
-                opacity: .82
-            }
-
-            main {
-                width: 100%;
-                border-radius: 20px 20px 0 0;
-                padding: 2rem 1.5rem calc(3rem + env(safe-area-inset-bottom)) 1.5rem;
-                margin: 0;
-                border: none;
-                border-top: 1px solid rgba(255, 255, 255, .1);
-                box-shadow: 0 -10px 40px rgba(0, 0, 0, .5);
-                transform: none
-            }
 
             body:has([popover]:popover-open) {
                 transform: scale(.94) translateY(-10px);
@@ -437,13 +370,15 @@
                 max-height: min(95dvh, 44rem);
                 border-bottom: 0;
                 border-radius: 20px 20px 0 0;
-                padding: 1.5rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+                padding: 0;
                 transform: translateY(106%);
                 box-shadow: 0 -14px 36px rgba(0, 0, 0, .6);
-                transition: transform .48s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .48s allow-discrete, overlay .48s allow-discrete
+                transition: transform .48s cubic-bezier(.22, 1, .36, 1) allow-discrete, display .48s allow-discrete, overlay .48s allow-discrete;
+                flex-direction: column;
             }
 
             [popover]:popover-open {
+                display: flex;
                 transform: translateY(0)
             }
 
@@ -457,31 +392,20 @@
                 background: rgba(0, 0, 0, .5)
             }
 
-            h2 {
+            [popover] h2 {
+                padding: 1.5rem 1.25rem .7rem 1.25rem;
+                margin-bottom: 0;
                 font-size: 1.2rem;
-                margin-bottom: 1rem;
-                padding-bottom: .7rem
+            }
+
+            .popover-scroll-area {
+                padding: 0 1.25rem;
+                padding-top: 1rem;
             }
 
             .close-btn {
                 width: 2rem;
                 height: 2rem
-            }
-
-            h1 {
-                font-size: 1.75rem;
-                margin-bottom: 1rem
-            }
-
-            .mascot {
-                top: -40px;
-                border-color: var(--accent);
-                transform: rotate(-5deg);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, .4)
-            }
-
-            .mascot:active {
-                transform: rotate(-5deg) scaleY(.8)
             }
 
             ul {
@@ -517,14 +441,27 @@
 
             .popover-actions a,
             .popover-actions button {
-                flex: 1 1 100%;
+                width: 100%;
                 text-align: center;
                 justify-content: center;
                 padding: .65rem .85rem;
+                box-sizing: border-box;
+            }
+
+            .popover-actions button {
+                flex: 1 1 100%;
+            }
+
+            .popover-actions.mobile-split-primary .primary-action {
+                width: auto;
+                flex: 1 1 calc(50% - 0.3rem);
+                max-width: calc(50% - 0.3rem);
             }
 
             .popover-actions {
-                flex-direction: column;
+                padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom)) 1.25rem;
+                flex-direction: row;
+                flex-wrap: wrap;
                 gap: 0.6rem;
             }
 
@@ -567,7 +504,7 @@
         <h1>owo.rocks</h1>
         <p>Welcome to the <span class="highlight">collective</span>.</p>
         <p>The domain was available, so now we live here.<br><br>We host friends, experiments, projects and whatever
-            else we want to share with the world!<br><br>Managed by silly cat people. Powered by bugs.</p>
+            else we want to share with the world!<br><br>Managed by silly cat people. <br />Powered by bugs.</p>
 
         <nav aria-label="Primary">
             <ul>
@@ -582,12 +519,8 @@
                                 d="M7 9C5.07 9 3.5 7.43 3.5 5.5S5.07 2 7 2s3.5 1.57 3.5 3.5S8.93 9 7 9Zm0-5.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 7 3.5Zm6.5 2C13.5 7.43 15.07 9 17 9s3.5-1.57 3.5-3.5S18.93 2 17 2s-3.5 1.57-3.5 3.5Zm1.5 0a2 2 0 1 1 3.999-.001A2 2 0 0 1 15 5.5Zm-6.5 7c0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5S13.93 9 12 9s-3.5 1.57-3.5 3.5Zm1.5 0a2 2 0 1 1 3.999-.001A2 2 0 0 1 10 12.5Zm5.92 7.425.61 2.27v-.005l1.45-.39-.61-2.265a2.75 2.75 0 0 0-2.655-2.04h-5.43c-1.24 0-2.335.84-2.655 2.04l-.61 2.27 1.45.39.61-2.27c.145-.545.64-.925 1.205-.925h5.43c.565 0 1.06.38 1.205.925Zm4.505-7 .74 2.77 1.45-.39-.74-2.765a2.75 2.75 0 0 0-2.655-2.04h-2.215V12h2.215c.565 0 1.06.38 1.205.925Zm-19.04 2.38 1.45.39v-.005l.74-2.77c.145-.545.64-.925 1.205-.925h2.215v-1.5H4.78c-1.24 0-2.335.84-2.655 2.04l-.74 2.77Z" />
                         </svg>About Us</button></li>
                 <li style="margin-left: auto;"><button type="button" class="link-style"
-                        popovertarget="warning-popover"><svg width="24" height="24"
-                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M2.86 21c-.45 0-.855-.235-1.08-.625a1.23 1.23 0 0 1 0-1.25L10.915 3.14a1.25 1.25 0 0 1 2.17 0l9.14 15.99c.225.39.22.86 0 1.25-.225.39-.63.625-1.08.625L21.14 21H2.86Zm.435-1.5H20.71L12 4.26 3.29 19.5h.005Zm9.455-5V9h-1.5v5.5h1.5ZM13 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
-                        </svg>About HRTCafe</button></li>
-                <!-- <li><a class="link-style" href="/gallery">Gallery</a></li> -->
+                        popovertarget="warning-popover">🏳️‍⚧️ HRTCafe?</button></li>
+                <!-- <li><a class="link-style" href="/gallery">Gallery</a></li> --> <!-- Coming Soon? 👀 -->
             </ul>
         </nav>
         <div id="warning-popover" popover role="dialog" aria-modal="true" aria-labelledby="warning-title"
@@ -599,23 +532,28 @@
                             d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
                     </svg></button>
             </h2>
-            <p class="accent-text">Hello there!</p>
-            <p>If you're coming from the <a class="inline-link-button"
-                    href="https://github.com/addidotlol/hrtcafe-mirror" target="_blank"
-                    rel="noopener noreferrer">hrtcafe-mirror</a>, please note I am <strong>not</strong> the previous
-                owner who hosted the HRTCafe mirror under this domain.</p>
-            <p>I want to keep this from becoming a dead end and would be happy to host a mirror of these resources
-                myself.</p>
-            <p>I'll be reaching out to friends of mine to see if we can work something out, but in the meantime, if you
-                have any questions or concerns, please don't hesitate to reach out via the contact button or Signal at
-                <strong
-                    style="user-select: all; cursor: text; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--accent); transition: background 0.1s ease;"
-                    onmouseover="this.style.background='rgba(198,160,246,0.15)'"
-                    onmouseout="this.style.background='rgba(255,255,255,0.05)'">@owo.01</strong>
-            </p>
-            <p id="warning-description" class="sr-only">Notice regarding the HRTCafe mirror.</p>
-            <div class="popover-actions"><button type="button" popovertarget="warning-popover"
-                    popovertargetaction="hide">Close</button></div>
+            <div class="popover-scroll-area">
+                <div class="flag-text">Hello there!</div>
+                <p>There's a good chance that you were brought here by the <a class="inline-link-button" href="https://github.com/addidotlol/hrtcafe-mirror" target="_blank" rel="noopener noreferrer">hrtcafe-mirror</a> repository, 
+                    please note I am <strong style="text-decoration: underline;">not</strong> the previous
+                    owner who used to host the HRTCafe mirror under this domain, and I have no affiliation with them.</p>
+
+                <p>However, I do want to keep this from becoming a dead end and would be happy to host a mirror of these resources myself.</p>
+                <p>I'll be reaching out to friends of mine to see if we can work something out as I personally do not have the resources to do this on my own.</p>
+
+                In the meantime, you can check out a <a href="https://github.com/soapingtime/diyhrt" target="_blank"
+                    rel="noopener noreferrer">recommended alternative</a><br>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0">(Please note that this is an independent
+                    resource and not affiliated with us in any way)</p>
+
+
+                <p>from the bottom of my heart, thank you for being here. Love yourself and each other 🏳️‍⚧️💜</p>
+                <p>- Nori</p>
+                <p id="warning-description" class="sr-only">Notice regarding the HRTCafe mirror.</p>
+            </div>
+            <div class="popover-actions">
+                <a href="https://hrt.soap.systems/" target="_blank" rel="noopener noreferrer" class="primary-action"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.25 19.5c.69 0 1.25-.56 1.25-1.25V12.5H21v5.75A2.755 2.755 0 0 1 18.25 21H5.75A2.755 2.755 0 0 1 3 18.25V5.75A2.755 2.755 0 0 1 5.75 3h5.75v1.5H5.75c-.69 0-1.25.56-1.25 1.25v12.5c0 .69.56 1.25 1.25 1.25h12.5ZM13.5 3h6.25c.69 0 1.25.56 1.25 1.25v6.25h-1.5V5.59l-7.955 8.425-1.09-1.03 8.01-8.485H13.5V3Z"/></svg> Visit Website</a>
+                <button type="button" popovertarget="warning-popover" popovertargetaction="hide">Close</button></div>
         </div>
         <div id="about-popover" popover role="dialog" aria-modal="true" aria-labelledby="about-title"
             aria-describedby="about-description">
@@ -626,18 +564,20 @@
                             d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
                     </svg></button>
             </h2>
-            <p><a href="https://owo.rocks">owo.rocks</a> is a small project run by <a
-                    href="https://github.com/lukegotbored">Nori</a>. It's our shared corner of the internet for all
-                kinds of weird and wonderful things we want to create and share with others!</p>
-            <p>It is private for now. If you want in, you can test your luck by <button type="button"
-                    class="inline-link-button" popovertarget="mail-popover">contacting us</button> ;)<br>
-                We cannot promise a spot, but we are always happy to meet new people and hear weird ideas!</p>
-            <p id="about-description" class="sr-only">About dialog with project details and links.</p>
-            <p><b>Attributions:</b><br>
-                <a href="https://github.com/griddy-icons/griddy-icons" rel="external noopener noreferrer"
-                    target="_blank">Icons by Griddy Icons</a>
-            </p>
-            <p>Made with &lt;3 by Nori.<br>Trans rights are human rights 🏳️‍⚧</p>
+            <div class="popover-scroll-area">
+                <p><a href="https://owo.rocks">owo.rocks</a> is a small project run by <a
+                        href="https://github.com/lukegotbored">Nori</a>. It's our shared corner of the internet for all
+                    kinds of weird and wonderful things we want to create and share with others!</p>
+                <p>It is private for now. If you want in, you can test your luck by <button type="button"
+                        class="inline-link-button" popovertarget="mail-popover">contacting us</button> ;)<br>
+                    We cannot promise a spot, but we are always happy to meet new people and hear weird ideas!</p>
+                <p id="about-description" class="sr-only">About dialog with project details and links.</p>
+                <p><b>Attributions:</b><br>
+                    <a href="https://github.com/griddy-icons/griddy-icons" rel="external noopener noreferrer"
+                        target="_blank">Icons by Griddy Icons</a>
+                </p>
+                <p>Made with &lt;3 by Nori.<br>Trans rights are human rights 🏳️‍⚧</p>
+            </div>
 
             <div class="popover-actions"><button type="button" popovertarget="about-popover"
                     popovertargetaction="hide">Close</button>
@@ -650,20 +590,52 @@
                         <path
                             d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
                     </svg></button></h2>
-            <p>You can directly email us at <strong
-                    style="user-select: all; cursor: text; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--accent); transition: background 0.1s ease;"
-                    onmouseover="this.style.background='rgba(198,160,246,0.15)'"
-                    onmouseout="this.style.background='rgba(255,255,255,0.05)'">contact@owo.rocks</strong>
-            </p>
-            <p style="font-size: 0.85rem; opacity: 0.8; margin-top: -0.5rem;">Tap the email above to select and copy it
-                manually, or use the button below to instantly compose a new message in your default mail app.</p>
-            <div class="popover-actions">
+            <div class="popover-scroll-area">
+                <p>You can reach us directly via Email or Signal!</p>
+                <div style="display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <strong>Email:</strong>
+                        <strong
+                            style="user-select: all; cursor: text; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--accent); transition: background 0.1s ease; margin-left: 0.25rem;"
+                            onmouseover="this.style.background='rgba(198,160,246,0.15)'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'">contact@owo.rocks</strong>
+                    </div>
+                    <div>
+                        <strong>Signal:</strong>
+                        <strong
+                            style="user-select: all; cursor: text; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--accent); transition: background 0.1s ease; margin-left: 0.25rem;"
+                            onmouseover="this.style.background='rgba(198,160,246,0.15)'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.05)'">@owo.01</strong>
+                    </div>
+                </div>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0;">Just click on the email or signal handle
+                    above to easily select it for copying! :)</p>
+            </div>
+            <div class="popover-actions mobile-split-primary">
                 <button type="button" popovertarget="mail-popover" popovertargetaction="hide">Maybe Later</button>
+                <a class="primary-action"
+                    href="https://signal.me/#eu/BJ2-0KTUI_wt-x-nLX_K_uzLKlkgzy6nDX4YN3pHNYusVZcQPXNHx6lhZA3v3I12"
+                    target="_blank" rel="noopener noreferrer" popovertarget="mail-popover" popovertargetaction="hide"
+                    style="text-decoration: none;">Open Signal</a>
                 <a class="primary-action" href="mailto:contact@owo.rocks" popovertarget="mail-popover"
-                    popovertargetaction="hide">Open Mail App</a>
+                    popovertargetaction="hide">Open Mail</a>
             </div>
         </div>
     </main>
+
+    <!-- the only js you'll see me use here -->
+    <script>
+        console.log(`
+    %cYou should be proud of who you are.
+    %cA truly unique individual, capable of amazing things.
+    %cNever let anyone make you feel otherwise.
+    %cBut most importantly, please remember that
+    %cYou'll always be loved, and should love yourself too.
+    
+    %c- Nori`, "font-style: italic; color: rgb(89, 207, 251); line-height: 1.6;", "font-style: italic; color: rgb(245, 171, 186); line-height: 1.6;", "font-style: italic; color: rgb(200, 200, 200); line-height: 1.6;", "font-style: italic; color: rgb(245, 171, 186); line-height: 1.6;", "font-style: italic; color: rgb(89, 207, 251); line-height: 1.6;", "font-weight: normal; line-height: 1.6;"),
+            console.log(`
+    %cThe BLANKSPACE Project, 2026 | All wrongs reserved.`, "font-size: 10px; color: rgb(150, 150, 150); background-color: rgb(20, 20, 20); padding: 5px 10px;");
+    </script>
 </body>
 
 </html>
