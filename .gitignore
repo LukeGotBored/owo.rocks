@@ -1,3 +1,10 @@
 .vite/deps/_metadata.json
 index.html
 .vite/deps/package.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
