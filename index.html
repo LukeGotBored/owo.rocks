@@ -178,6 +178,11 @@
             color: #fff
         }
 
+        #warning-popover p.accent-text {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
         @media (hover: hover) {
             :is(a:hover, .link-style:hover, .inline-link-button:hover, .close-btn:hover, .popover-actions a:hover, .popover-actions button:hover) {
                 color: var(--accent);
@@ -563,6 +568,7 @@
         <p>Welcome to the <span class="highlight">collective</span>.</p>
         <p>The domain was available, so now we live here.<br><br>We host friends, experiments, projects and whatever
             else we want to share with the world!<br><br>Managed by silly cat people. Powered by bugs.</p>
+
         <nav aria-label="Primary">
             <ul>
                 <li><button type="button" class="link-style" popovertarget="mail-popover"><svg width="24" height="24"
@@ -575,9 +581,27 @@
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7 9C5.07 9 3.5 7.43 3.5 5.5S5.07 2 7 2s3.5 1.57 3.5 3.5S8.93 9 7 9Zm0-5.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 7 3.5Zm6.5 2C13.5 7.43 15.07 9 17 9s3.5-1.57 3.5-3.5S18.93 2 17 2s-3.5 1.57-3.5 3.5Zm1.5 0a2 2 0 1 1 3.999-.001A2 2 0 0 1 15 5.5Zm-6.5 7c0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5S13.93 9 12 9s-3.5 1.57-3.5 3.5Zm1.5 0a2 2 0 1 1 3.999-.001A2 2 0 0 1 10 12.5Zm5.92 7.425.61 2.27v-.005l1.45-.39-.61-2.265a2.75 2.75 0 0 0-2.655-2.04h-5.43c-1.24 0-2.335.84-2.655 2.04l-.61 2.27 1.45.39.61-2.27c.145-.545.64-.925 1.205-.925h5.43c.565 0 1.06.38 1.205.925Zm4.505-7 .74 2.77 1.45-.39-.74-2.765a2.75 2.75 0 0 0-2.655-2.04h-2.215V12h2.215c.565 0 1.06.38 1.205.925Zm-19.04 2.38 1.45.39v-.005l.74-2.77c.145-.545.64-.925 1.205-.925h2.215v-1.5H4.78c-1.24 0-2.335.84-2.655 2.04l-.74 2.77Z" />
                         </svg>About Us</button></li>
+                <li style="margin-left: auto;"><button type="button" class="link-style" popovertarget="warning-popover"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>HRTCafe Notice</button></li>
                 <!-- <li><a class="link-style" href="/gallery">Gallery</a></li> -->
             </ul>
         </nav>
+        <div id="warning-popover" popover role="dialog" aria-modal="true" aria-labelledby="warning-title" aria-describedby="warning-description">
+            <h2><span id="warning-title">HRTCafe Notice</span> <button type="button" class="close-btn"
+                    popovertarget="warning-popover" popovertargetaction="hide" aria-label="Close warning notice"><svg
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path
+                            d="m20.28 4.78-1.06-1.06L12 10.94 4.78 3.72 3.72 4.78 10.94 12l-7.22 7.22 1.06 1.06L12 13.06l7.22 7.22 1.06-1.06L13.06 12l7.22-7.22Z" />
+                    </svg></button>
+            </h2>
+            <p class="accent-text">Hello there!</p>
+            <p>If you're coming from the <a class="inline-link-button" href="https://github.com/addidotlol/hrtcafe-mirror" target="_blank" rel="noopener noreferrer">hrtcafe-mirror</a>, please note I am <strong>not</strong> the previous owner who hosted the HRTCafe mirror under this domain.</p>
+            <p>I want to keep this from becoming a dead end and would be happy to host a mirror of these resources myself.</p>
+            <p>I'll be reaching out to friends of mine to see if we can work something out, but in the meantime, if you have any questions or concerns, please don't hesitate to reach out via the contact button or Signal at <strong style="user-select: all; cursor: text; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px; color: var(--accent); transition: background 0.1s ease;"
+                    onmouseover="this.style.background='rgba(198,160,246,0.15)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.05)'">@owo.01</strong></p>
+            <p id="warning-description" class="sr-only">Notice regarding the HRTCafe mirror.</p>
+            <div class="popover-actions"><button type="button" popovertarget="warning-popover" popovertargetaction="hide">Close</button></div>
+        </div>
         <div id="about-popover" popover role="dialog" aria-modal="true" aria-labelledby="about-title"
             aria-describedby="about-description">
             <h2><span id="about-title">About Us</span> <button type="button" class="close-btn"
